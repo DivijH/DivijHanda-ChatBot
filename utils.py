@@ -4,11 +4,11 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "client-secret.json"
 #Importing dialogflow for Natural Language Processing
 import dialogflow_v2 as dialogflow
 dialogflow_session_client = dialogflow.SessionsClient()
-PROJECT_ID = "weatherbot-xabwgm"
+PROJECT_ID = <your_project_id>
 
 #Importing MongoDB for storing and retrieving search history of the user
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:test@cluster0-nuplz.mongodb.net/test?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://test:<password>@cluster0-nuplz.mongodb.net/test?retryWrites=true&w=majority')
 db = client.get_database('chatbot_db')
 news_records = db.news_records
 weather_records = db.weather_records
@@ -39,7 +39,7 @@ def get_news(parameters):
 import requests, json
 
 def get_weather(parameters):
-	api_key = '94968f03768993d048eded64532d6d42'
+	api_key = <your_api_key>
 	city = parameters.get('geo-city')
 	url = 'http://api.openweathermap.org/data/2.5/weather?appid=' + api_key + '&q=' + city
 	#Storing data in MongoDB
